@@ -1,0 +1,71 @@
+@prefix ns1: <http://w3.org/ns/dpv#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/policy/External> a ns1:PersonalDataHandling ;
+    ns1:hasDataController <http://example.org/organization/Edmonton> ;
+    ns1:hasDataSubject <http://example.org/people/bob> ;
+    ns1:hasLegalBasis <http://example.org/legal/FOIP> ;
+    ns1:hasPersonalDataCategory ns1:Age,
+        ns1:Gender,
+        ns1:HouseOwned ;
+    ns1:hasProcessing ns1:Disclose,
+        ns1:Transform ;
+    ns1:hasPurpose <http://example.org/purpose/CitizenStatistics> ;
+    ns1:hasRecipient <http://example.org/organization/GeneralPublic> ;
+    ns1:hasTechnicalOrganisationalMeasure ns1:PrivacyByDesign .
+
+<http://example.org/policy/Internal> a ns1:PersonalDataHandling ;
+    ns1:hasDataController <http://example.org/organization/Edmonton> ;
+    ns1:hasDataSubject <http://example.org/people/bob> ;
+    ns1:hasLegalBasis <http://example.org/legal/FOIP> ;
+    ns1:hasPersonalDataCategory ns1:Age,
+        ns1:Contact,
+        ns1:Demographic,
+        ns1:Family,
+        ns1:Gender,
+        ns1:HouseOwned,
+        ns1:Language,
+        ns1:LifeHistory,
+        ns1:MedicalHealth,
+        ns1:Name,
+        ns1:Professional ;
+    ns1:hasProcessing ns1:Copy,
+        ns1:Disclose,
+        ns1:Obtain,
+        ns1:Remove,
+        ns1:Store,
+        ns1:Transfer,
+        ns1:Transform ;
+    ns1:hasPurpose <http://example.org/purpose/CitizenStatistics> ;
+    ns1:hasRecipient <http://example.org/organization/Edmonton> ;
+    ns1:hasTechnicalOrganisationalMeasure ns1:AuthorisationProcedure,
+        ns1:CodeOfConduct,
+        ns1:Contract,
+        ns1:NDA,
+        ns1:StaffTraining .
+
+<http://example.org/purpose/PublicCitizenStatistics> rdfs:label "Public Citizen Statistics" ;
+    rdfs:comment "Provide aggregate statistics on municipal census data" ;
+    rdfs:subClassOf ns1:SellInsightsFromData .
+
+<http://example.org/organization/GeneralPublic> a ns1:Recipient .
+
+<http://example.org/legal/FOIP> a ns1:Consent ;
+    ns1:consentNotice <https://www.servicealberta.ca/foip/legislation/foip-act.cfm> .
+
+<http://example.org/people/bob> a ns1:DataSubject .
+
+<http://example.org/purpose/CitizenStatistics> rdfs:label "Citizen Statistics" ;
+    rdfs:comment "Citizen statistics to deliver and optimize municipal services" ;
+    rdfs:subClassOf ns1:InternalResourceOptimisation,
+        ns1:OptimisationForController,
+        ns1:ResearchAndDevelopment,
+        ns1:ServiceOptimization,
+        ns1:ServiceProvision .
+
+<http://example.org/organization/Edmonton> a ns1:DataController,
+        ns1:Recipient .
+
